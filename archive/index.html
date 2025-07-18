@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Martin Ashworth | Website Services</title>
+    <style>
+        /* --- Color & Font Definitions --- */
+        :root {
+            --bg-light: #E6DCD1;
+            --bg-dark: #1D1A1A;
+            --bg-accent-pink: #E87A7E;
+            --bg-accent-cyan: #43C5C3;
+            --text-dark: #1D1A1A;
+            --text-light: #E6DCD1;
+            --accent-blue: #0D24D6;
+            --accent-yellow: #F3D03E;
+            --font-heading: 'Didot', 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            --font-body: 'Avenir Next', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        /* --- Basic Reset & Body Styles --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-body);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* --- Layout & Structure --- */
+        .container {
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            font-weight: normal;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 10vw, 5rem);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: clamp(2.5rem, 8vw, 3.5rem);
+            margin-top: 0;
+            margin-bottom: 3rem;
+        }
+
+        h3 {
+             font-size: 1.75rem;
+        }
+
+        p {
+            max-width: 650px;
+            margin: 0 auto 2rem auto;
+        }
+
+        /* --- Button Styles --- */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-blue);
+            color: var(--text-light);
+            padding: 18px 40px;
+            font-family: var(--font-body);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- Section Specific Styles --- */
+        
+        .hero {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 4rem;
+            text-align: left;
+        }
+        
+        .service-item p {
+            font-size: 1rem;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .about .container {
+             display: flex;
+             flex-wrap: wrap;
+             align-items: center;
+             justify-content: center;
+             gap: 60px;
+             text-align: left;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+        }
+        
+        .about-text h2 {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-text p {
+             margin-left: 0;
+             margin-right: 0;
+        }
+        
+        /* ---- CORRECTION CI-DESSOUS ---- */
+
+        /* 1. Stylez le conteneur pour qu'il soit un cercle de 280px */
+        .about-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden; /* Crucial pour couper l'image à la forme du cercle */
+            background-color: var(--accent-yellow); /* Couleur de fond si l'image ne charge pas */
+            flex-shrink: 0; /* Empêche le cercle de rétrécir sur les petits écrans */
+        }
+        
+        /* 2. Stylez l'image pour qu'elle remplisse ce conteneur */
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Remplit le conteneur sans déformer l'image */
+        }
+
+        /* ---- FIN DE LA CORRECTION ---- */
+        
+        .cta-section {
+            background-color: var(--bg-accent-cyan);
+            color: var(--bg-dark);
+        }
+
+        .footer {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding: 40px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        .footer p {
+            margin: 0;
+            opacity: 0.8;
+        }
+
+        .section-pink {
+            background-color: var(--bg-accent-pink);
+            color: var(--bg-dark); 
+        }
+
+        .section-pink h2,
+        .section-pink h3 {
+            color: var(--bg-dark);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <header class="hero container">
+        <h1>Martin Ashworth</h1>
+        <p>Creative website services that connect, engage, and grow your business.</p>
+        <a href="#services" class="cta-button">Learn More</a>
+    </header>
+
+    <main>
+        <!-- SERVICES SECTION -->
+        <section id="services" class="services container section-pink">
+            <h2>What I Offer</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3>Website Design</h3>
+                    <p>Creating beautiful, user-friendly designs that reflect your brand and achieve your goals. My focus is on clarity, elegance, and providing an exceptional user experience.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Web Development</h3>
+                    <p>Building fast, responsive, and reliable websites using modern technologies. I ensure your site looks great and performs perfectly on all devices, from desktops to mobile phones.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Content & SEO Strategy</h3>
+                    <p>Crafting compelling content and optimising your site to attract your ideal audience. I help you rank higher in search results and turn visitors into loyal customers.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="about">
+            <div class="container">
+                <!-- MODIFICATION : Utilisez le nom de classe original "about-image" pour le conteneur -->
+                <div class="about-image">
+                    <img src="MugShot.png" alt="Portrait of Martin Ashworth">
+                </div>
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>I'm Martin Ashworth, a web designer and developer who believes in a collaborative and transparent process. I work closely with my clients to understand their vision and translate it into a website that is not only visually appealing but also strategically effective.</p>
+                    <p style="margin-top: 1rem;">My passion is helping small businesses and individuals build a strong online presence that genuinely represents their value.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CALL TO ACTION SECTION -->
+        <section id="contact" class="cta-section">
+            <div class="container">
+                <h2>Have a project in mind?</h2>
+                <p>I'm currently available for new client work. Let's talk about how we can work together.</p>
+                <a href="mailto:martin.ashworth@icloud.com" class="cta-button" style="background-color: var(--bg-dark); color: var(--text-light);">martin.ashworth@icloud.com</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+        <p>© 2025 Martin Ashworth | Website Design and Development</p>
+    </footer>
+
+</body>
+</html>

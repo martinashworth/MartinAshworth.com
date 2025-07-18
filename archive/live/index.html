@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Martin Ashworth offers website design, development, and SEO strategy services tailored for small businesses and individuals.">
+    <meta name="robots" content="index, follow">
+    <title>Martin Ashworth | Website Services</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* --- Color & Font Definitions --- */
+        :root {
+            --bg-light: #E6DCD1;
+            --bg-dark: #1D1A1A;
+            --bg-pink: #E87A7E;
+            --bg-cyan: #43C5C3;
+            --bg-blue: #0D24D6;
+            --shadow-blue: rgba(13, 36, 214, 0.4);
+            --bg-yellow: #F3D03E;
+            --bg-red-picasso: #D92B2B;
+            --shadow-red: rgba(217, 43, 43, 0.5);
+            --bg-dark-green-picasso: #3A643A;
+            --bg-brown-picasso: #8A4E35;
+            --bg-orange-picasso: #E56A38;
+            --shadow-orange: rgba(229, 106, 56, 0.5);
+            --text-dark: #1D1A1A;
+            --text-light: #E6DCD1;
+            --font-heading: 'Didot', 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+            --font-body: 'Avenir Next', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        body.dark-mode {
+            /* In dark mode, 'bg-light' becomes the dark background */
+            --bg-light: #2c2f33; 
+
+            /* 'text-dark' becomes the light text color */
+            --text-dark: #E6DCD1;
+
+            /* And 'text-light' becomes dark for use on light buttons */
+            --text-light: #1D1A1A;
+
+            /* We also need to lighten some accents that are too dark for a dark background */
+            --accent-blue: #6C7FFC; /* A lighter blue for better contrast */
+            --accent-dark-green-picasso: #77B877;
+            --accent-brown-picasso: #C88F79;
+
+            /* The already-vibrant accents will work well and can stay the same */
+            --accent-vibrant-pink: #E95D80;
+            --bg-accent-cyan: #43C5C3;
+            --accent-yellow: #F3D03E;
+            --accent-red-picasso: #D92B2B;
+            --accent-orange-picasso: #E56A38;
+
+            /* Dark mode for section-specific backgrounds */
+            --bg-accent-pink: #4a2c3a; /* A darker, muted pink for the services section */
+            --bg-accent-cyan: #234a49; /* A darker, muted cyan for the contact section */
+        }
+
+        /* --- Basic Reset & Body Styles --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-body);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.3s ease, color 0.3s ease; /* transition for smoother colour mode change */
+        }
+
+        /* --- Base Layout & Structure --- */
+        .section {
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 40px;
+            padding-right: 40px;
+            text-align: center;
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            font-weight: normal;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 10vw, 5rem);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: clamp(2.5rem, 8vw, 3.5rem);
+            margin-top: 0;
+            margin-bottom: 3rem;
+        }
+
+        h3 {
+             font-size: 1.75rem;
+        }
+
+        p {
+            max-width: 650px;
+            margin: 0 auto 2rem auto;
+        }
+        
+        /* Adds margin to consecutive paragraphs for better spacing */
+        p + p {
+            margin-top: 1rem;
+        }
+
+        /* --- Animation Styles --- */
+        .hidden {
+            opacity: 0;
+            filter: blur(5px);
+            /*transform: translateY(30px);*/
+            transform: translateX(-100%);
+            /*transition: opacity 0.6s ease-out, transform 0.6s ease-out;*/
+            transition: all 1s;
+        }
+
+        .show {
+            opacity: 1;
+            filter: blur(0);
+            /*transform: translateY(0);*/
+            transform: translateX(0);
+}
+
+        /* --- Component: Core (Colour-Agnostic) Button --- */
+        .cta-button {
+            display: inline-block;
+            padding: 18px 40px;
+            font-family: var(--font-body);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            color: var(--text-light);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* Base hover transform for all buttons */
+        .cta-button:hover {
+            transform: translateY(-3px);
+        }
+
+        .theme-toggle-button {
+            position: fixed; /* This makes it "float" on the screen */
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000; /* Ensures it stays on top of other content */
+            
+            /* Styling */
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+            border-radius: 50%; /* Makes it a circle */
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            
+            /* Centering the icon inside */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            transition: transform 0.2s ease, background-color 0.3s ease;
+        }
+
+        .theme-toggle-button:hover {
+            transform: scale(1.1); /* Slightly enlarge on hover */
+        }
+
+        /* Make the button's colors adapt to the theme */
+        body.dark-mode .theme-toggle-button {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            border: 2px solid var(--text-dark);
+        }
+
+        /* --- Button Color Modifiers --- */
+
+        /* Blue Button */
+        .cta-button--blue {
+            background-color: var(--bg-blue);
+        }
+        .cta-button--blue:hover {
+            box-shadow: 0 4px 15px var(--shadow-blue); /* Blue shadow */
+        }
+
+        /* New Orange Contact Button */
+        .cta-button--orange {
+            background-color: var(--bg-orange-picasso);
+        }
+        .cta-button--orange:hover {
+            box-shadow: 0 4px 15px var(--shadow-orange); /* Orange shadow */
+        }
+
+        /* Alternative Red Button (for you to experiment with) */
+        .cta-button--red {
+            background-color: var(--bg-red-picasso);
+        }
+        .cta-button--red:hover {
+            box-shadow: 0 4px 15px rgba(217, 43, 43, 0.5); /* Red shadow */
+        }
+
+        /* --- Component: Reusable Layouts --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 4rem;
+            text-align: left;
+        }
+        
+        .service-item p {
+            font-size: 1rem;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .split-layout {
+             display: flex;
+             flex-wrap: wrap;
+             align-items: center;
+             justify-content: center;
+             gap: 60px;
+             text-align: left;
+        }
+        
+        .split-layout__text {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+        }
+
+        .split-layout__text h2 {
+            text-align: left;
+            margin-bottom: 1.5rem;
+        }
+
+        .split-layout__text p {
+             margin-left: 0;
+             margin-right: 0;
+        }
+
+        .split-layout__image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: var(--bg-yellow);
+            flex-shrink: 0;
+        }
+        
+        .split-layout__image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- Section-Specific Backgrounds --- */
+        .section-hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Fills the screen height */
+            padding-top: 0; /* Override base section padding */
+            padding-bottom: 0;
+        }
+        
+        .section-hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 500px;
+        }
+
+        .section-services {
+            background-color: var(--bg-pink);
+            color: var(--bg-dark); 
+        }
+
+        .section-services h2,
+        .section-services h3 {
+            color: var(--bg-dark);
+        }
+
+        .section-contact {
+            background-color: var(--bg-cyan);
+            color: var(--bg-dark);
+        }
+
+        .section-footer {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .section-footer p {
+            margin: 0;
+            opacity: 0.8;
+        }
+
+    </style>
+</head>
+<body>
+
+    <button id="theme-toggle" class="theme-toggle-button" aria-label="Toggle dark and light mode">🌙</button>
+
+    <header class="section section-hero">
+        <div class="container">
+            <h1>Martin Ashworth</h1>
+            <p>Creative website services that connect, engage, and grow your business.</p>
+            <a href="#services" class="cta-button cta-button--blue">Learn More</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="services" class="section section-services">
+            <div class="container">
+                <h2>What I Offer</h2>
+                <div class="services-grid">
+                    <div class="service-item hidden">
+                        <h3>Website Design</h3>
+                        <p>Creating beautiful, user-friendly designs that reflect your brand and achieve your goals. My focus is on clarity, elegance, and providing an exceptional user experience.</p>
+                    </div>
+                    <div class="service-item hidden">
+                        <h3>Web Development</h3>
+                        <p>Building fast, responsive, and reliable websites using modern technologies. I ensure your site looks great and performs perfectly on all devices, from desktops to mobile phones.</p>
+                    </div>
+                    <div class="service-item hidden">
+                        <h3>Content & SEO Strategy</h3>
+                        <p>Crafting compelling content and optimising your site to attract your ideal audience. I help you rank higher in search results and turn visitors into loyal customers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section section-about">
+            <div class="container">
+                <div class="split-layout">
+                    <div class="split-layout__image hidden">
+                        <img src="MugShot.png" alt="Portrait of Martin Ashworth">
+                    </div>
+                    <div class="split-layout__text">
+                        <h2>About Me</h2>
+                        <p>I'm Martin Ashworth, a web designer and developer who believes in a collaborative and transparent process. I work closely with my clients to understand their vision and translate it into a website that is not only visually appealing but also strategically effective.</p>
+                        <p>My passion is helping small businesses and individuals build a strong online presence that genuinely represents their value.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section section-contact">
+            <div class="container">
+                <h2>Have a project in mind?</h2>
+                <p>Let's talk about how we can work together.</p>
+                <a href="mailto:martin.ashworth@icloud.com" class="cta-button cta-button--orange">Electro Mail Me</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="section section-footer">
+        <div class="container">
+             <p>© <span id="current-year"></span> Martin Ashworth | Website Design and Development</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Sets the copyright year automatically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classlist.remove('show');
+                }
+            });
+        });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+        // Toggle Theme Colours
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Function to apply the saved theme on page load
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-mode');
+                themeToggle.textContent = '☀️'; // Show sun in dark mode
+            } else {
+                body.classList.remove('dark-mode');
+                themeToggle.textContent = '🌙'; // Show moon in light mode
+            }
+        }
+
+        // Function to handle the toggle click
+        function handleThemeToggle() {
+            body.classList.toggle('dark-mode');
+            
+            // Save the user's choice and update the icon
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '☀️';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '🌙';
+            }
+        }
+
+        // Add the event listener to the button
+        themeToggle.addEventListener('click', handleThemeToggle);
+
+        // Apply the theme when the page first loads
+        document.addEventListener('DOMContentLoaded', applySavedTheme);
+
+    </script>
+
+</body>
+</html>

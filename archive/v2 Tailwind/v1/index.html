@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<!-- Add class="dark" to this html tag to enable dark mode -->
+<html lang="en" class="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Martin Ashworth offers website design, development, and SEO strategy services tailored for small businesses and individuals.">
+    <meta name="robots" content="index, follow">
+    <title>Martin Ashworth | Website Services (Tailwind CSS)</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind CSS Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Enable dark mode based on a class
+            theme: {
+                extend: {
+                    colors: {
+                        'light-bg': '#E6DCD1',
+                        'dark-bg': '#1A1A1A',
+                        'pink-picasso': '#E87A7E',
+                        'cyan-picasso': '#43C5C3',
+                        'blue-picasso': '#0D24D6',
+                        'yellow-picasso': '#F3D03E',
+                        'red-picasso': '#D92B2B',
+                        'green-picasso': '#3A643A',
+                        'brown-picasso': '#8A4E35',
+                        'orange-picasso': '#E56A38',
+                        'text-dark': '#1D1A1A',
+                        'text-light': '#E6DCD1',
+                    },
+                    fontFamily: {
+                        // Using common serif/sans-serif fonts. Replace with your actual font names if using Google Fonts etc.
+                        'heading': ['Didot', 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', 'Palatino', 'serif'],
+                        'body': ['Avenir Next', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 1s ease-out forwards',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Simple style for the scroll-driven animation */
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.8s ease-out;
+        }
+        .fade-in.is-visible {
+            opacity: 1;
+        }
+    </style>
+
+</head>
+<body class="font-body bg-light-bg text-text-dark dark:bg-dark-bg dark:text-text-light antialiased transition-colors duration-300">
+
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle" class="fixed bottom-5 right-5 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-dark-bg text-text-light transition-transform duration-200 hover:scale-110 dark:bg-light-bg dark:text-text-dark" aria-label="Toggle dark and light mode">
+        <!-- Icon will be set by JavaScript -->
+    </button>
+
+    <!-- Hero Section -->
+    <header class="flex min-h-screen flex-col items-center justify-center text-center">
+        <div class="container mx-auto px-5">
+            <h1 class="font-heading text-5xl md:text-7xl lg:text-8xl mb-4 tracking-wide">Martin Ashworth</h1>
+            <p class="mx-auto max-w-md text-lg md:text-xl opacity-90">Creative website services that connect, engage, and grow your business.</p>
+            <a href="#services" class="mt-8 inline-block rounded-md bg-blue-picasso px-10 py-4 font-bold text-white shadow-lg shadow-blue-picasso/40 transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl">Learn More</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Services Section -->
+        <section id="services" class="py-20 md:py-28 bg-pink-picasso text-text-dark">
+            <div class="container mx-auto px-5 text-center">
+                <h2 class="font-heading text-4xl md:text-5xl mb-12">What I Offer</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 text-left">
+                    <div class="service-item fade-in">
+                        <h3 class="font-heading text-2xl mb-2">Website Design</h3>
+                        <p>Creating beautiful, user-friendly designs that reflect your brand and achieve your goals. My focus is on clarity, elegance, and providing an exceptional user experience.</p>
+                    </div>
+                    <div class="service-item fade-in">
+                        <h3 class="font-heading text-2xl mb-2">Web Development</h3>
+                        <p>Building fast, responsive, and reliable websites using modern technologies. I ensure your site looks great and performs perfectly on all devices, from desktops to mobile phones.</p>
+                    </div>
+                    <div class="service-item fade-in">
+                        <h3 class="font-heading text-2xl mb-2">Content & SEO Strategy</h3>
+                        <p>Crafting compelling content and optimising your site to attract your ideal audience. I help you rank higher in search results and turn visitors into loyal customers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 md:py-28">
+            <div class="container mx-auto px-5">
+                <div class="flex flex-wrap items-center justify-center gap-12 md:gap-20 text-center md:text-left">
+                    <div class="fade-in h-64 w-64 md:h-80 md:w-80 flex-shrink-0 overflow-hidden rounded-full bg-yellow-picasso">
+                        <img src="https://placehold.co/320x320/F3D03E/1D1A1A?text=Martin" alt="Portrait of Martin Ashworth" class="h-full w-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/320x320/cccccc/333333?text=Image+Not+Found';">
+                    </div>
+                    <div class="max-w-xl">
+                        <h2 class="font-heading text-4xl md:text-5xl mb-6">About Me</h2>
+                        <p class="mb-4">I'm Martin Ashworth, a web designer and developer who believes in a collaborative and transparent process. I work closely with my clients to understand their vision and translate it into a website that is not only visually appealing but also strategically effective.</p>
+                        <p>My passion is helping small businesses and individuals build a strong online presence that genuinely represents their value.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-28 bg-cyan-picasso text-text-dark">
+            <div class="container mx-auto px-5 text-center">
+                <h2 class="font-heading text-4xl md:text-5xl mb-4">Have a project in mind?</h2>
+                <p class="mx-auto max-w-md text-lg">Let's talk about how we can work together.</p>
+                <a href="mailto:martin.ashworth@icloud.com" class="mt-8 inline-block rounded-md bg-orange-picasso px-10 py-4 font-bold text-white shadow-lg shadow-orange-picasso/50 transition-transform duration-200 hover:-translate-y-1 hover:shadow-xl">Electro Mail Me</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-16 bg-dark-bg text-text-light">
+        <div class="container mx-auto px-5 text-center">
+             <p class="opacity-80">© <span id="current-year"></span> Martin Ashworth | Website Design and Development</p>
+        </div>
+    </footer>
+    
+    <script>
+        // --- Set Copyright Year ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- Intersection Observer for Fade-in Animations ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        const hiddenElements = document.querySelectorAll('.fade-in');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+        // --- Theme Toggle Logic ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlEl = document.documentElement;
+
+        // Function to apply the saved theme on page load
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                htmlEl.classList.add('dark');
+                themeToggle.textContent = '☀️'; // Sun icon for dark mode
+            } else {
+                htmlEl.classList.remove('dark');
+                themeToggle.textContent = '🌙'; // Moon icon for light mode
+            }
+        }
+
+        // Function to handle the toggle click
+        function handleThemeToggle() {
+            htmlEl.classList.toggle('dark');
+            
+            // Save the user's choice and update the icon
+            if (htmlEl.classList.contains('dark')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '☀️';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '🌙';
+            }
+        }
+
+        // Add the event listener to the button
+        themeToggle.addEventListener('click', handleThemeToggle);
+
+        // Apply the theme when the page first loads
+        document.addEventListener('DOMContentLoaded', applySavedTheme);
+    </script>
+
+</body>
+</html>
