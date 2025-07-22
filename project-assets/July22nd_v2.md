@@ -1,5 +1,5 @@
-###A Methodical Journey Through the CORS Maze
-**Date:** 22 July 2025
+A Methodical Journey Through the CORS Maze
+Date: 22 July 2025
 
 The Objective
 The plan for the day was to execute the first de-risking spike: prove that my static frontend, running on a local machine, could fetch and render content from a remote, headless WordPress CMS. This was a critical test of the foundational architecture for all future dynamic content.
