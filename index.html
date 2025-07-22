@@ -68,11 +68,10 @@
                     <div class="animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000 h-64 w-64 md:h-80 md:w-80 flex-shrink-0 overflow-hidden rounded-full bg-brown-picasso dark:bg-brown-picasso-dark/75">
                         <img src="images/MugShot.png" alt="Portrait of Martin Ashworth" class="h-full w-full object-cover" onerror="this.onerror=null;this.src='https://placehold.co/320x320/cccccc/333333?text=Image+Not+Found';">
                     </div>
-                    <!-- Animation classes changed to vertical fade-in -->
-                    <div class="animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000 delay-200 max-w-xl">
+                    <!-- This div will be populated by the CMS fetch -->
+                    <div id="about-me-content-target" class="animate-on-scroll opacity-0 translate-y-8 transition-all duration-1000 delay-200 max-w-xl">
                         <h2 class="font-heading text-4xl md:text-5xl mb-6">About Me</h2>
-                        <p class="mb-4">I'm Martin Ashworth, a web designer and developer who believes in a collaborative and transparent process. I work closely with my clients to understand their vision and translate it into a website that is not only visually appealing but also strategically effective.</p>
-                        <p>My passion is helping small businesses and individuals build a strong online presence that genuinely represents their value.</p>
+                        <p>Loading content from CMS...</p>
                     </div>
                 </div>
             </div>
@@ -139,12 +138,49 @@
                 themeToggle.textContent = '☀️';
             } else {
                 localStorage.setItem('theme', 'light');
-                themeToggle.textContent = '�';
+                themeToggle.textContent = '🌙';
             }
         }
 
         themeToggle.addEventListener('click', handleThemeToggle);
-        document.addEventListener('DOMContentLoaded', applySavedTheme);
+
+        // --- Headless CMS Fetch Logic ---
+        async function fetchAboutContent() {
+            const targetElement = document.getElementById('about-me-content-target');
+            const apiUrl = 'https://dev.martinashworth.com/wp-json/wp/v2/pages?slug=about-me-poc';
+
+            try {
+                const response = await fetch(apiUrl);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                if (data && data.length > 0) {
+                    const page = data[0];
+                    // Re-create the structure with the fetched content
+                    targetElement.innerHTML = `
+                        <h2 class="font-heading text-4xl md:text-5xl mb-6">${page.title.rendered}</h2>
+                        ${page.content.rendered}
+                    `;
+                } else {
+                    targetElement.innerHTML += '<p class="text-red-picasso">Error: Content not found. Please check the slug in WordPress.</p>';
+                }
+
+            } catch (error) {
+                console.error('Error fetching CMS content:', error);
+                targetElement.innerHTML += `<p class="text-red-picasso">Error: Could not fetch content from the CMS. ${error.message}</p>`;
+            }
+        }
+
+        // Apply theme and fetch content when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            applySavedTheme();
+            fetchAboutContent();
+        });
+
     </script>
 
 </body>
