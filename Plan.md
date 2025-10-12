@@ -1,5 +1,8 @@
 # What To Include On The Site
 ## Features
+- Cheat Sheet : Git
+- Cheat Sheet : html
+- Cheat Sheet : SFTP - https://www.comparitech.com/net-admin/sftp-commands-cheat-sheet/
 - Parallax - https://youtu.be/RipdRoTnvJQ?si=4IzUkg3Sio1ePPml
 - Curves - https://youtu.be/lPJVi797Uy0?si=03IGD6iCkHl7nTLs
 - SVG animations - https://youtu.be/UTHgr6NLeEw?si=uW714JDuu16ZVhvW
